@@ -1,0 +1,36 @@
+Question 1.
+    The main problem with this generic analysis is that we include the outliers in the data along with the standard cluster of orders.
+This causes the AOV (Average Order Value) to be misrepresented due to minority of shops that receive a large number of orders from customers.
+
+There are two ideal ways to get a better representation of the AOV:
+In thr first approach, we could take the daily TOV (Total Order Value) and eliminate the outlier data points.
+This would be an unstructured approach as we would not examine the days when shops would receive an abnormal number of orders
+or isolate  the shops that consistently receive large orders.
+
+The second approach is to add an upper bound value to the TOV a shop receive per day.
+Due to the fact that this data sets combines information from small and relatively large shops we have a disproportionate set of data.
+As such if we group the majority of shops by a bounded number of orders we would include the majority of shops in the data set
+while preventing the large stores from offsetting the AOV.
+Then by only considering the store with x amount of orders per day or less we will get a more accurate AOV.
+We could also isolate the larger stores that don't fit within x number of orders and calculate their AOV.
+This gives us the two ends of the distribution of the AOV while grouping like sized companies by their ANO (Average Number of Orders).
+
+Question 2:
+There are a variety of metrics that can be derived from this dataset.
+However, we want to focus on the most informative metrics rather than calculating every possible statistic.
+As Shopify seeks to optimise their merchants' shops the best metric to derive from this data would be product pricing.
+The goal of this program is to determine the pricing brackets where vendors would be able to see an increase in earnings.
+This would allow shopify to help merchants increase their product prices such that their profits increase while
+avoiding the trap of losing customers at the cost of minimal profits.
+
+Question 3:
+    The metric shown in the output shows the price the vendors will sell their shoes at and their potential multiple in earnings.
+As such based on the earnings, shoes sold at $138 will result in multiple of 96 which put the 30-day earnings at an
+estimated 13,248 ( = 138 * 96) and then we can see the distribution across brackets of the product price to the order earnings multiple.
+
+In this output we can see that if merchants keep their product prices in the range of $130 to $165 there
+will be minimal profit increases. This tells the vendors that there is more value in maintain prices as
+they will lose customer with no added benefit. However, looking at the $205 and up price bracket we can see a
+considerable change in the possible earnings. This informs the vendors that are selling at the mid to low 100 dollar range
+that they should only increase their prices if they want to sell their products above the $170 price baseline.
+This change will offset the loss in customer as overall earnings will increase.

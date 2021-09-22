@@ -1,0 +1,69 @@
+Question 1:
+
+    Query:
+            SELECT ShipperName, Count(O.ShipperID) As shipCount FROM [Orders] O
+            Inner JOIN [Shippers] S ON O.ShipperID=S.ShipperID
+            GROUP BY S.[ShipperID];
+    Result:
+            ShipperName	    shipCount
+            Speedy Express	    54
+            United Package	    74
+            Federal Shipping	68
+    Answer:
+           (Speedy Express : 54)
+
+
+
+Question 2:
+
+    Query:
+            Select top.LastName, MAX(top.mostSale) from
+                (SELECT LastName, Count(E.LastName) As mostSale FROM [Orders] O
+                Inner JOIN [Employees] E ON O.EmployeeID=E.EmployeeID
+                GROUP BY E.[EmployeeID]) top
+
+    Result:
+            LastName	MAX(top.mostSale)
+              Peacock	        40
+
+    Answer:
+            Peacock
+
+
+
+Question 3:
+
+    Query:
+     1. -> Display Product name
+            Select PD.ProductName from (Select prod.ProductID, Max(prod.prodnum) from
+                (Select OD.ProductID, Count(OD.ProductID) as prodNum from (SELECT OrderID FROM [Customers] C
+                Inner JOIN [Orders] O ON O.CustomerID=C.CustomerID
+                WHERE C.Country LIKE  'Germany') Odd
+                Inner JOIN [OrderDetails] OD ON OD.OrderID=Odd.OrderID
+                Group By OD.ProductID) prod) PP
+                Inner JOIN [Products] PD ON PD.ProductID=PP.ProductID
+
+     2. -> Display Product name and Count
+            Select PD.ProductName, PP.maxCount from (Select prod.ProductID, Max(prod.prodnum) as maxCount from
+                (Select OD.ProductID, Count(OD.ProductID) as prodNum from (SELECT OrderID FROM [Customers] C
+                Inner JOIN [Orders] O ON O.CustomerID=C.CustomerID
+                WHERE C.Country LIKE  'Germany') Odd
+                Inner JOIN [OrderDetails] OD ON OD.OrderID=Odd.OrderID
+                Group By OD.ProductID) prod) PP
+                Inner JOIN [Products] PD ON PD.ProductID=PP.ProductID
+
+
+    Result:
+            1.
+                ProductName
+              Gorgonzola Telino
+
+            2.
+             ProductName	     maxCount
+            Gorgonzola Telino	    5
+
+    Answer:
+            Gorgonzola Telino
+
+
+
